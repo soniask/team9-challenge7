@@ -17,10 +17,21 @@ class SearchPage extends React.Component {
                 />
 
                 {
-                    this.state.error ? (
-                        <p className="alert alert-danger">{this.state.error}</p>
-                    ) : null
+                    this.state.error 
+                        ? (
+                            <p className="alert alert-danger">{this.state.error}</p>
+                        ) 
+                        : (
+                            <LyricDisplay
+                                lyrics={this.state.lyricsc}
+                                title={this.state.title}
+                                album={this.state.album}
+                            />
+                        )
                 }
+
+
+
             </div>
         );
     }
