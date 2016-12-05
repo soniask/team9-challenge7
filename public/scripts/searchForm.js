@@ -4,9 +4,11 @@ class SearchForm extends React.Component {
         return (
             <form onSubmit={(e)=>this.searchTracks(e)}>
                 <div className="input-group">
-                    <input type="text" placeholder="Search" aria-label="Search input" ref="query"/>
+                    <input className="form-control" type="text" placeholder="Search" aria-label="Search input" ref="query"/>
                     <span className="input-group-btn">
-                        <button className="btn btn-default" type="submit"></button>
+                        <button className="btn btn-default" type="submit">
+                            <i className="fa fa-search" aria-hidden="true"></i>
+                        </button>
                     </span>
                 </div>
             </form>
@@ -16,8 +18,9 @@ class SearchForm extends React.Component {
     searchTracks(e) {
         e.preventDefault();
 
-        var trackTitle = this.refs.query.value.toLowerCase().replace(" ", "_");
-        console.log(trackTitle);
+        {/* retrieve the user input, make it lowercase, 
+            separate words by underscores instead of spaces */}
+        var trackTitle = this.refs.query.value.toLowerCase().replace(/\s/g, "_");
 
         this.props.search(trackTitle);
     }
