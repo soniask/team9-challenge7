@@ -74,7 +74,8 @@ class SearchPage extends React.Component {
                 this.setState({
                     title: title,
                     album: album,
-                    lyrics: lyrics
+                    lyrics: lyrics,
+                    lineNumber: undefined // reset the stored line number whenever a new song is loaded
                 });
             } else {
                 this.setState({error: "Song not found"});
