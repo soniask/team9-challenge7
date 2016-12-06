@@ -78,6 +78,8 @@ class SearchPage extends React.Component {
                     totalNum++;
                     if(numOfLyrics < 4 && lyric !== "") {
                         if(numOfLyrics > 0) {
+                            //Use of a back tick in babel denotes that something is going to be formated to multiple lines
+                            //This is so we can pre-format our text blocks when desplaying them so each group of lyrics will still display each line on its own
                             line += ` 
 ` + lyric;
                         } else {
