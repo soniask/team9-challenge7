@@ -39,7 +39,7 @@ class SearchPage extends React.Component {
                             : null
                     }
 
-                    {
+                    {   // This is test code
                         this.state.lineNumber != undefined
                             ?
                                 <div className="col-md-6">

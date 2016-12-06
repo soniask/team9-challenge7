@@ -19,10 +19,9 @@ class LyricDisplay extends React.Component {
                             <div
                                 className="lyric-line"
                                 key={album + "-" + title + "-" + index}
-                                id={album + "-" + title + "-" + index}
                                 onClick={(e) => this.selectLine(e, index)}
                             >
-                                {line || "~"}
+                                {line || "~" /* show seperation between segments of song */} 
                             </div>   
                         ))
                     }
@@ -35,8 +34,8 @@ class LyricDisplay extends React.Component {
     // Converts a string of format "this_is_a_title" to "This Is A Title", returning a new string
     toTitleFormat(text) {
         var newText = text
-            .replace(/_/g, " ")
-            .replace(/(?: |\b)(\w)/g, function(key) { return key.toUpperCase() });
+            .replace(/_/g, " ") // change underlines to spaces
+            .replace(/(?: |\b)(\w)/g, function(key) { return key.toUpperCase() }); // capitalize the first letter of each word
 
         return(newText);
     }
