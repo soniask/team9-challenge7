@@ -43,7 +43,6 @@ class SearchPage extends React.Component {
                         this.state.lineNumber != undefined
                             ?
                                 <div className="col-md-6">
-                                    <h1>The currently selected line is {this.state.lineNumber}</h1>
                                     <h2>The current lyric is: {this.state.lyrics[this.state.lineNumber]}</h2>
                                 </div>
                             : null
@@ -71,10 +70,43 @@ class SearchPage extends React.Component {
                 var album = resultJSON.album;
                 var lyrics = resultJSON.lyrics.split("\n");
 
+                console.log(resultJSON.lyrics);
+                console.log(lyrics);
+
+                var numOfLyrics = 0;
+                var line = "";
+                var newLyrics = [];
+                var totalNum = 0;
+                lyrics.forEach(function(lyric) {
+                    totalNum++;
+                    if(numOfLyrics < 4 && lyric !== "") {
+                        if(numOfLyrics > 0) {
+                            line += ` 
+` + lyric;
+                        } else {
+                            line += lyric;
+                        }
+                        numOfLyrics++;
+                    } else if(lyric !=="") {
+                        newLyrics.push(line);
+                        line = lyric;
+                        numOfLyrics = 1;
+                    } else {
+                        newLyrics.push(line);
+                        line = "";
+                        numOfLyrics = 0;
+                    }
+                    if(totalNum == lyrics.length) {
+                        newLyrics.push(line);
+                    }
+                })
+
+                console.log(newLyrics);
+
                 this.setState({
                     title: title,
                     album: album,
-                    lyrics: lyrics,
+                    lyrics: newLyrics,
                     lineNumber: undefined // reset the stored line number whenever a new song is loaded
                 });
             } else {

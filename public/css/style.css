@@ -40,8 +40,10 @@
 .lyric-line {
     font-size: 1.2em;
     line-height: 1.6;
+    white-space: pre;
 }
 
 .lyric-line:hover {
     background-color: yellow;
+    cursor: pointer;
 }
