@@ -10,8 +10,8 @@ class SearchPage extends React.Component {
     render() {
 
         return(
-
             <div className="container">
+                <Header/>
                 <SearchForm
                     search={(track) => this.searchTracks(track)}
                 />
@@ -22,13 +22,13 @@ class SearchPage extends React.Component {
                     ) : null
                 }
             </div>
-
         );
     }
 
     searchTracks(track){
         this.setState({error: undefined});
-        var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http%3A%2F%2Fwww.kanyerest.xyz%2Fapi%2Ftrack%2F"+track+"%22&format=json&diagnostics=true&callback=";
+        var url = "https://query.yahooapis.com/v1/public/yql?q=select%20*%20from%20html%20where%20url%3D%22http%3A%2F%2Fwww.kanyerest.xyz%2Fapi%2Ftrack%2F"+track+"%22&format=json";
+   
         fetch(url)
         .then((response) => {
             return response.json();
