@@ -27,7 +27,7 @@ class Header extends React.Component {
                     this.state.user ? (
                         <div className="dropdown pull-right">
                             <button className="dropbtn">
-                                Welcome, {this.state.user}
+                                Welcome, {this.state.user.displayName}
                                 <span className="caret"></span>
                             </button>
                             <div className="dropdown-content">
