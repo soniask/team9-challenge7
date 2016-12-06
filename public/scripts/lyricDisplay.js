@@ -20,8 +20,9 @@ class LyricDisplay extends React.Component {
                                 className="lyric-line"
                                 key={album + "-" + title + "-" + index}
                                 id={album + "-" + title + "-" + index}
+                                onClick={(e) => this.selectLine(e, index)}
                             >
-                                {line}
+                                {line || "~"}
                             </div>   
                         ))
                     }
@@ -38,5 +39,11 @@ class LyricDisplay extends React.Component {
             .replace(/(?: |\b)(\w)/g, function(key) { return key.toUpperCase() });
 
         return(newText);
+    }
+
+    // Add the last selected line number to the parent state
+    selectLine(e, lineNumber) {
+        e.preventDefault();
+        this.props.storeLineNumber(lineNumber);
     }
 }
