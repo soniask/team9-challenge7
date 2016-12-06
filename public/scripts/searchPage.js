@@ -17,10 +17,40 @@ class SearchPage extends React.Component {
                 />
 
                 {
-                    this.state.error ? (
-                        <p className="alert alert-danger">{this.state.error}</p>
-                    ) : null
+                    this.state.error 
+                        ? (
+                            <p className="alert alert-danger">{this.state.error}</p>
+                        ) 
+                        : null
                 }
+
+                <div className="row">
+                    {
+                        this.state.lyrics
+                            ?
+                                <div className="col-md-6">
+                                    <LyricDisplay
+                                        lyrics={this.state.lyrics}
+                                        title={this.state.title}
+                                        album={this.state.album}
+                                        storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
+                                    />
+                                </div>
+                            : null
+                    }
+
+                    {   // This is test code
+                        this.state.lineNumber != undefined
+                            ?
+                                <div className="col-md-6">
+                                    <h1>The currently selected line is {this.state.lineNumber}</h1>
+                                    <h2>The current lyric is: {this.state.lyrics[this.state.lineNumber]}</h2>
+                                </div>
+                            : null
+                    }
+                </div>
+
+
             </div>
         );
     }
@@ -44,7 +74,8 @@ class SearchPage extends React.Component {
                 this.setState({
                     title: title,
                     album: album,
-                    lyrics: lyrics
+                    lyrics: lyrics,
+                    lineNumber: undefined // reset the stored line number whenever a new song is loaded
                 });
             } else {
                 this.setState({error: "Song not found"});
@@ -52,6 +83,14 @@ class SearchPage extends React.Component {
             
           
         })
+    }
+
+    // Add the given line number to the current state
+    storeLineNumber(lineNumber) {
+
+        this.setState({
+            lineNumber: lineNumber
+        });
     }
 }
 
