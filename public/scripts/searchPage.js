@@ -70,9 +70,6 @@ class SearchPage extends React.Component {
                 var album = resultJSON.album;
                 var lyrics = resultJSON.lyrics.split("\n");
 
-                console.log(resultJSON.lyrics);
-                console.log(lyrics);
-
                 var numOfLyrics = 0;
                 var line = "";
                 var newLyrics = [];
@@ -100,8 +97,6 @@ class SearchPage extends React.Component {
                         newLyrics.push(line);
                     }
                 })
-
-                console.log(newLyrics);
 
                 this.setState({
                     title: title,
