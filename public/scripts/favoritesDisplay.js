@@ -2,7 +2,6 @@
 
 class FavoritesDisplay extends React.Component {
 
-    
     render() {
         var favorites = this.props.favorites;    
 

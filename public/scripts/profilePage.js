@@ -1,19 +1,40 @@
 "use strict";
 
 class ProfilePage extends React.Component {
-
-    render() {
+    constructor(props) {
+        super(props);       
         var database = firebase.database();
         var user = firebase.auth().currentUser;
-        var favorites = database.ref( user.uid + '/{favorites}');
+        var userId = firebase.auth().currentUser.uid;
+        // this.state.favorites = (
+        // return firebase.database().ref('/users/' + userId).once('value').then(function(snapshot) {
+        // var username = snapshot.val().username;
+        
 
-        this.setState(favorites);
+        database.ref('/userTree/' + user.uid).once('value').then((snapshot) => {
+           this.state = {
+               favorites:snapshot.val()
+           };
+        });
+        }
+
+
+        // var favorites = database.ref( user.uid + '/{userTree}').then(() => {
+        //  this.state = {
+        //      favorites: favorites
+        //  })
+    //    console.log(this.favorites);
+    //    this.setState({favorites: favorites});
+        
+    
+    render() {
+        
         return(
 
             <div>
                 <Header/>
                 <FavoritesDisplay 
-                //favorites={(favorites) => this.favorites}
+                favorites
                 />
 
             
