@@ -41,11 +41,16 @@ class SearchPage extends React.Component {
                             : null
                     }
 
-                    {   // This is test code
+                    {
                         this.state.lineNumber != undefined
                             ?
                                 <div className="col-md-6">
-                                    <h2>The current lyric is: <br/><br/><i>{this.state.lyrics[this.state.lineNumber]}</i></h2>
+                                    <LyricInfo
+                                        title={this.state.title}
+                                        album={this.state.album}
+                                        line={this.state.lyrics[this.state.lineNumber]}
+                                        lineNumber={this.state.lineNumber}
+                                    />
                                 </div>
                             : null
                     }
