@@ -68,6 +68,7 @@ class SignupForm extends React.Component {
 
     formSubmit(e) {
         e.preventDefault();
+        console.log(this.refs.signupName.value);
 
         this.props.onSubmit(this.refs.signupName.value, this.refs.signupEmail.value, this.refs.signupPassword.value, this.refs.signupPasswordConfirm.value);
     }

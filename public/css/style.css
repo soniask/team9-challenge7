@@ -20,6 +20,20 @@
     width: 50%;
 }
 
+.fix-to-top {
+    position: fixed;
+    top: 0;
+    background-color: white;
+    z-index: 1;
+    border-bottom: solid grey 1px;
+    left: 5px;
+    right: 5px;
+}
+
+.move-below {
+    margin-top: 120px;
+}
+
 /* LyricDisplay Component Stylings */
 
 .song-display h2 {
@@ -40,7 +54,7 @@
 .lyric-line {
     font-size: 1.2em;
     line-height: 1.6;
-    white-space: pre;
+    white-space: pre-wrap;
 }
 
 .lyric-line:hover {
