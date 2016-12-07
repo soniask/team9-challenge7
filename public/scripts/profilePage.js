@@ -7,7 +7,6 @@ class ProfilePage extends React.Component {
         var user = firebase.auth().currentUser;
         //var favorites = database.ref( user.uid + '/{favorites}');
         database.ref('/userTree/' + user.uid).once('value').then((snapshot) => {
-            console.log(snapshot);
             this.state = {
                 favorites:snapshot.val()
             };
@@ -22,13 +21,12 @@ class ProfilePage extends React.Component {
 
             <div>
                 <Header/>
-                {/*  
+           
                 <FavoritesDisplay 
-                
+                    favorites={this.state.favorites}
                 />
-                 favorites={(favorites) => this.state.favorites} 
-                */}
-            
+                 
+        
             </div>
 
         );
