@@ -67,7 +67,10 @@
 /* LyricInfo Component Stylings */
 
 .lyric-info {
-    margin-top: 7.6em;
+    position: fixed;
+    top: 21.5vh;
+    padding-left: 15px;
+    padding-right: 15px;
 }
 
 .lyric-info .chosen-line {
