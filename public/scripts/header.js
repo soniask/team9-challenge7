@@ -26,23 +26,35 @@ class Header extends React.Component {
                 {
                     this.state.user ? (
                         <div className="dropdown pull-right">
-                            <button className="dropbtn">
+                            <button className="btn btn-default dropbtn">
                                 Welcome, {this.state.user.displayName}
                                 <span className="caret"></span>
                             </button>
                             <div className="dropdown-content">
-                                <a href="profile.html">Profile</a>
-                                <a href="#" id="logout">Logout</a>
+                                <a className="btn btn-default" href="profile.html">
+                                    <div className="text-right">
+                                        Profile
+                                    </div>
+                                </a>
+                                <a className="btn btn-default" href="#" id="logout">
+                                    <div className="text-right">
+                                        Logout
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     ) : (
                         <div className="dropdown pull-right">
-                            <button className="dropbtn">
+                            <button className="btn-default dropbtn">
                                 Welcome
                                 <span className="caret"></span>
                             </button>
                             <div className="dropdown-content">
-                                <a href="login.html" id="logout">Login</a>
+                                <a className="btn btn-default" href="login.html" id="logout">
+                                    <div className="text-right">
+                                        Login
+                                    </div>
+                                </a>
                             </div>
                         </div>
                     )
