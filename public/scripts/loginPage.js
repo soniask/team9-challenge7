@@ -7,13 +7,14 @@ class LoginPage extends React.Component {
         this.state = {
             signupError: false,
             loginError: false,
-            error: ""
+            error: "",
+            emailSent: true
         }
     }
 
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
-            if(user) {
+            if(user && this.state.emailSent) {
                 window.location.href="index.html";
             }
         });
@@ -50,10 +51,10 @@ class LoginPage extends React.Component {
     }
 
     createUser(name, email, password, passwordConfirm) {
-
         this.setState({
             signupError: false,
-            loginError: false
+            loginError: false,
+            emailSent: false
         })
 
         if(password == passwordConfirm) {
@@ -74,6 +75,9 @@ class LoginPage extends React.Component {
                 user.sendEmailVerification()
                 .then(() => {
                     window.location.href = "index.html";
+                    this.setState({
+                        emailSent: true
+                    })
                 }).catch((error) => {
                     this.setState({
                         signupError: true,

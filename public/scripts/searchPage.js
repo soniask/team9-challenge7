@@ -11,20 +11,22 @@ class SearchPage extends React.Component {
 
         return(
             <div className="container">
-                <Header/>
-                <SearchForm
-                    search={(track) => this.searchTracks(track)}
-                />
+                <div className="fix-to-top">
+                    <Header/>
+                    <SearchForm
+                        search={(track) => this.searchTracks(track)}
+                    />
 
-                {
-                    this.state.error 
-                        ? (
-                            <p className="alert alert-danger">{this.state.error}</p>
-                        ) 
-                        : null
-                }
+                    {
+                        this.state.error 
+                            ? (
+                                <p className="alert alert-danger">{this.state.error}</p>
+                            ) 
+                            : null
+                    }
+                </div>
 
-                <div className="row">
+                <div className="row move-below">
                     {
                         this.state.lyrics
                             ?
@@ -43,7 +45,7 @@ class SearchPage extends React.Component {
                         this.state.lineNumber != undefined
                             ?
                                 <div className="col-md-6">
-                                    <h2>The current lyric is: {this.state.lyrics[this.state.lineNumber]}</h2>
+                                    <h2>The current lyric is: <br/><br/><i>{this.state.lyrics[this.state.lineNumber]}</i></h2>
                                 </div>
                             : null
                     }
