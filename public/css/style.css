@@ -6,6 +6,7 @@
 .dropdown-content {
     display: none;
     position: absolute;
+    width: 100%;
 }
 
 .dropdown-content a {
