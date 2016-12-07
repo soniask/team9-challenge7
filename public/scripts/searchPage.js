@@ -100,6 +100,8 @@ class SearchPage extends React.Component {
                     }
                 })
 
+                console.log(newLyrics);
+
                 this.setState({
                     title: title,
                     album: album,
