@@ -4,15 +4,16 @@ class ProfilePage extends React.Component {
 
     render() {
         var database = firebase.database();
-        var user = firebase.User();
-        this.setState(favorites= database.ref( user.uid + '/{favorites}'))
+        var user = firebase.auth().currentUser;
+        var favorites = database.ref( user.uid + '/{favorites}');
+
+        this.setState(favorites);
         return(
 
             <div>
                 <Header/>
-                <FavoritesDisplay
-                favorites={this.state.favorites}
-                
+                <FavoritesDisplay 
+                //favorites={(favorites) => this.favorites}
                 />
 
             
