@@ -62,3 +62,16 @@
     background-color: yellow;
     cursor: pointer;
 }
+
+
+/* LyricInfo Component Stylings */
+
+.lyric-info {
+    margin-top: 7.6em;
+}
+
+.lyric-info .chosen-line {
+    font-size: 1.4em;
+    line-height: 1.6;
+    font-weight: bold;
+}
