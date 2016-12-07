@@ -46,8 +46,36 @@ class LyricInfo extends React.Component {
         );
     }
 
+    // save the selected line to the data base in two seperate ways:
+    // 1) stored by user, so you can easily see which lines a user has favorited
+    // 2) stored by song, so you can see the everyone's favorite line in a given song
     addfavorite(e) {
         e.preventDefault();
+
+        var database = firebase.database();
+        var user = firebase.auth().currentUser;
+
+        var uid = user.uid;
+        var displayName = user.displayName;
+
+        var title = this.props.title;
+        var album = this.props.album;
+        var lineNumber = this.props.lineNumber;
+        var line = this.props.line;
+
+        
+
+        var userTree = database.ref("userTree/" + uid + "/" + album + "/" + title);
+        userTree.push({
+            album: album,
+            title: title,
+            line: line
+        });
+
+        var lyricTree = database.ref("lyricTree/" + album + "/" + title + "/" + lineNumber);
+        lyricTree.push({
+            displayName: displayName
+        });
 
 
     }
