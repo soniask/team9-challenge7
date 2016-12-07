@@ -50,7 +50,7 @@ class Header extends React.Component {
                                 <span className="caret"></span>
                             </button>
                             <div className="dropdown-content">
-                                <a className="btn btn-default" href="index.html" id="logout">
+                                <a className="btn btn-default" href="login.html" id="logout">
                                     <div className="text-right">
                                         Login
                                     </div>

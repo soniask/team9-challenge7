@@ -14,7 +14,7 @@ class LoginPage extends React.Component {
     componentDidMount() {
         firebase.auth().onAuthStateChanged((user) => {
             if(user) {
-                window.location.href="search.html";
+                window.location.href="index.html";
             }
         });
     }
@@ -73,7 +73,7 @@ class LoginPage extends React.Component {
 
                 user.sendEmailVerification()
                 .then(() => {
-                    window.location.href = "search.html";
+                    window.location.href = "index.html";
                 }).catch((error) => {
                     this.setState({
                         signupError: true,
@@ -105,7 +105,7 @@ class LoginPage extends React.Component {
 
         firebase.auth().signInWithEmailAndPassword(email, password)
         .then(() => {
-            window.location.href = "search.html";
+            window.location.href = "index.html";
         })
         .catch((error) => {
             this.setState({

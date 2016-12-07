@@ -43,7 +43,6 @@ class SearchPage extends React.Component {
                         this.state.lineNumber != undefined
                             ?
                                 <div className="col-md-6">
-                                    <h1>The currently selected line is {this.state.lineNumber}</h1>
                                     <h2>The current lyric is: {this.state.lyrics[this.state.lineNumber]}</h2>
                                 </div>
                             : null
@@ -71,10 +70,40 @@ class SearchPage extends React.Component {
                 var album = resultJSON.album;
                 var lyrics = resultJSON.lyrics.split("\n");
 
+                var numOfLyrics = 0;
+                var line = "";
+                var newLyrics = [];
+                var totalNum = 0;
+                lyrics.forEach(function(lyric) {
+                    totalNum++;
+                    if(numOfLyrics < 4 && lyric !== "") {
+                        if(numOfLyrics > 0) {
+                            //Use of a back tick in babel denotes that something is going to be formated to multiple lines
+                            //This is so we can pre-format our text blocks when desplaying them so each group of lyrics will still display each line on its own
+                            line += ` 
+` + lyric;
+                        } else {
+                            line += lyric;
+                        }
+                        numOfLyrics++;
+                    } else if(lyric !=="") {
+                        newLyrics.push(line);
+                        line = lyric;
+                        numOfLyrics = 1;
+                    } else {
+                        newLyrics.push(line);
+                        line = "";
+                        numOfLyrics = 0;
+                    }
+                    if(totalNum == lyrics.length) {
+                        newLyrics.push(line);
+                    }
+                })
+
                 this.setState({
                     title: title,
                     album: album,
-                    lyrics: lyrics,
+                    lyrics: newLyrics,
                     lineNumber: undefined // reset the stored line number whenever a new song is loaded
                 });
             } else {
