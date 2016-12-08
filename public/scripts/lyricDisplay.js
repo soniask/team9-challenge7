@@ -44,5 +44,6 @@ class LyricDisplay extends React.Component {
     selectLine(e, lineNumber) {
         e.preventDefault();
         this.props.storeLineNumber(lineNumber);
+        this.props.getFavorites(this.props.album, this.props.title, this.props.lyrics);
     }
 }
