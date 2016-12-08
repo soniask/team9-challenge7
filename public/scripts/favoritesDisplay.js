@@ -10,7 +10,7 @@ class FavoritesDisplay extends React.Component {
                  <h3>Your Favorite Lyrics</h3>
                      <ul>
                          {
-                             this.state.favorites.map((favorites)=> {
+                             this.props.favorites.map((favorites)=> {
                                  return <li key={favorites}>
                                      <a href="#" onClick={(e) => this.onSavedClick(e, favorites)}>
                                          {favorites}
