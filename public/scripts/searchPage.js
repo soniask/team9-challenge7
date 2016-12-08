@@ -58,6 +58,7 @@ class SearchPage extends React.Component {
                                         <TopLyrics
                                             title={this.state.title}
                                             album={this.state.album}
+                                            lyrics={this.state.lyrics}
                                         />
                                     </div>
                                 </div>
