@@ -15,3 +15,6 @@
   3. The main features of the website would be making an account/logging in, searching songs/displaying lyrics, and saving and displaying results for the most liked lines in a song.
 
 2. Our project will use the Kanye REST API to find lyrics for a given song, firebase to save lyric rankings per song, and bootstrap for styling purposes.
+
+
+https://info343-final-4ac83.firebaseapp.com/index.html
