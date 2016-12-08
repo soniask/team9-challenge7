@@ -45,12 +45,21 @@ class SearchPage extends React.Component {
                         this.state.lineNumber != undefined
                             ?
                                 <div className="col-md-6">
-                                    <LyricInfo
-                                        title={this.state.title}
-                                        album={this.state.album}
-                                        line={this.state.lyrics[this.state.lineNumber]}
-                                        lineNumber={this.state.lineNumber}
-                                    />
+                                    <div className="lyric-info">
+                                        <LyricInfo
+                                            title={this.state.title}
+                                            album={this.state.album}
+                                            line={this.state.lyrics[this.state.lineNumber]}
+                                            lineNumber={this.state.lineNumber}
+                                        />
+
+                                        <div className="line-break"></div>
+
+                                        <TopLyrics
+                                            title={this.state.title}
+                                            album={this.state.album}
+                                        />
+                                    </div>
                                 </div>
                             : null
                     }
