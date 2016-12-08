@@ -38,16 +38,16 @@ class FavoritesDisplay extends React.Component {
     }
 
     createListOfLyricItems(favorites){
+        var lyricItemArray = [];
         Object.keys(favorites).map((albumTitle) => {
             var album = favorites[albumTitle];
             Object.keys(album).map((songName)=>{
                 var songItems = album[songName];
-                var lyricItemArray = this.state.lyricItemArray;
                 lyricItemArray.push(songItems);
-                this.setState({
-                    lyricItemArray: lyricItemArray
-                })
-            })
-        })
+            });
+        });
+        this.setState({
+            lyricItemArray: lyricItemArray
+        });
     }    
 }
