@@ -8,7 +8,20 @@ class TopLyrics extends React.Component {
 
         return(
             
-            <div>
+            <div className="top-lyrics">
+
+                <div className="title">Top Lines:</div>
+
+                <ol>
+                    {
+                        favorites.map((line, index) => (
+                            <li key={index}
+                                className="line">
+                                {line}
+                            </li>
+                        ))
+                    }
+                </ol>
 
             </div>
         );
