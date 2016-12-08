@@ -12,7 +12,6 @@ class SearchPage extends React.Component {
         return(
             <div>
                 <div className="container-fluid">
-
                     <div className="row top-nav">
 
                         <div className="col-sm-3 title">Yeezy McYeezusFace</div>
@@ -39,7 +38,6 @@ class SearchPage extends React.Component {
                 </div>
 
                 <div className="container">
-
 
                     <div className="row move-below">
                         {

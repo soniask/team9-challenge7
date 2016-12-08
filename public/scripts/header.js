@@ -15,7 +15,7 @@ class Header extends React.Component {
             
             <header>
                 {
-                    this.state.user ? (
+                    user ? (
 
                         <div className="dropdown pull-right">
                             <button className="btn btn-default dropbtn">
