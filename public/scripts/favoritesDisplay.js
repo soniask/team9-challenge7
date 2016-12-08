@@ -2,22 +2,19 @@
 
 class FavoritesDisplay extends React.Component {
 
-    
-    render() {
-        var favorites = this.props.favorites;    
-
+    render() {   
        return (
             <div>
                  <h3>Your Favorite Lyrics</h3>
                      <ul>
                          {
-                             this.state.favorites.map((favorites)=> {
-                                 return <li key={favorites}>
+                             this.props.favorites.map((favorites)=> (
+                                 <li key={favorites}>
                                      <a href="#" onClick={(e) => this.onSavedClick(e, favorites)}>
                                          {favorites}
                                      </a>
                                  </li>
-                             })
+                             ))
                          }
                      </ul>
             </div>
