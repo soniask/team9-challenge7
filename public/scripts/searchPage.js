@@ -18,7 +18,7 @@ class SearchPage extends React.Component {
 
                         <div className="col-sm-3 title">Yeezy McYeezusFace</div>
 
-                        <div className="col-md-6 search">
+                        <div className="col-sm-6 search">
                             <SearchForm
                                 search={(track) => this.searchTracks(track)}
                             />
@@ -45,7 +45,7 @@ class SearchPage extends React.Component {
                     {
                         this.state.lyrics
                             ?
-                                <div className="col-md-6">
+                                <div className="col-sm-6">
                                     <LyricDisplay
                                         lyrics={this.state.lyrics}
                                         title={this.state.title}
@@ -60,7 +60,7 @@ class SearchPage extends React.Component {
                     {
                         this.state.lineNumber != undefined
                             ?
-                                <div className="col-md-6">
+                                <div className="col-sm-6">
                                     <div className="lyric-info">
                                         <LyricInfo
                                             title={this.state.title}
