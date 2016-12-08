@@ -8,10 +8,10 @@
 * Sean Yeager
 
 1. 
-  1. Our app will allow a user to search a song which will then display the lyrics for the song and allow them to choose their favorite line from the song. After the user has chosen their favorite line a list of the most liked lines will be displayed for the current song sorted by most likes. As more users vote for their favorite lines the rankings will change to display lines that are crowd favorites.
+  1. Our app allows a user to search for their favorite Kanye song. The lyrics for the song will be displayed and you will be able to choose from pre-determined blocks of lyrics to decide which one is your favorite. For each song the top 5 favorite lyrics will be displayed to you. As more users vote the top/best lyrics will become more solidified and apparent.
   
-  2. The kinds of people who would be using our app are mainly people who love listening to music a lot and are looking for a fun website to share their preferences on. The website isn't aimed at any serious audience. It's mainly for a lot of people to enjoy and have fun on.
+  2. Any fan of Kanye will love using our app. The only downside is not being able to favorite every lyric!
 
   3. The main features of the website would be making an account/logging in, searching songs/displaying lyrics, and saving and displaying results for the most liked lines in a song.
 
-2. Our project will be using the genius API to find lyrics for a given song, firebase to save lyric rankings per song, and bootstrap for styling purposes.
+2. Our project will use the Kanye REST API to find lyrics for a given song, firebase to save lyric rankings per song, and bootstrap for styling purposes.
