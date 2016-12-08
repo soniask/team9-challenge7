@@ -21,11 +21,21 @@ class Header extends React.Component {
                                 <span className="caret"></span>
                             </button>
                             <div className="dropdown-content">
-                                <a className="btn btn-default" href="profile.html">
-                                    <div className="text-right">
-                                        Profile
-                                    </div>
-                                </a>
+                                {
+                                    window.location.href.indexOf("profile.html") > -1 ? (
+                                        <a className="btn btn-default" href="index.html">
+                                            <div className="text-right">
+                                                Search Songs
+                                            </div>
+                                        </a>
+                                    ) : (
+                                        <a className="btn btn-default" href="profile.html">
+                                            <div className="text-right">
+                                                Profile
+                                            </div>
+                                        </a>
+                                    )
+                                }
                                 <a className="btn btn-default" href="#" id="logout">
                                     <div className="text-right">
                                         Logout
