@@ -12,14 +12,10 @@ class ProfilePage extends React.Component {
         var userId = firebase.auth().currentUser.uid;
 
         database.ref('/userTree/' + userId).once('value').then((snapshot) => {
-            console.log("here's the snapshot value");
-            console.log(snapshot.val());
             this.setState({
                 favorites:snapshot.val()
             });
        });
-
-       console.log("the component mounted");
     }
         
     

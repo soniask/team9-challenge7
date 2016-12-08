@@ -3,17 +3,32 @@
 class FavoritesDisplay extends React.Component {
 
     render() {
-        console.log("now for the render in favoritesdisplay:");
-        console.log(this.props.favorites);   
-        // WHAT IF THE USER HASN'T FAVORITED ANY LINES???????????????'
         return (
             <div>
                 <h3>Your Favorite Lyrics</h3>
                 <ul>
                     {
-                        this.props.favorites.map((possiblyAnAlbum)=> {
-                            console.log(possiblyAnAlbum);
-                        })
+                        Object.keys(this.props.favorites).map((albumTitle)=> {
+                            Object.keys(this.props.favorites[albumTitle]).map((songName)=>{
+                                var songItems = this.props.favorites[albumTitle][songName];
+                                Object.keys(songItems).map((songItem) => {
+                                    var lyricsItem = songItems[songItem];
+                                    console.log(lyricsItem.title);
+
+                                    return (
+                                        <li>
+                                            <p>Help, why isn't this working</p>
+                                            <p>{lyricsItem.title}</p>
+                                            <p>{lyricsItem.album}</p>
+                                            <p>{lyricsItem.line}</p>
+                                        </li>
+                                    )
+                                })
+                            })
+                            
+
+
+                        }, this)
                     }
                 </ul>
             </div>
