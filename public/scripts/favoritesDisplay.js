@@ -20,13 +20,21 @@ class FavoritesDisplay extends React.Component {
                 <h3>Your Favorite Lyrics</h3>
                 <ul>
                     {
-                        this.state.lyricItemArray.map((lyricItem) => (
-                            <li>
-                                <p>{lyricItem.title}</p>
-                                <p>{lyricItem.album}</p>
-                                <p>{lyricItem.line}</p>
-                            </li>
-                        ))
+                        this.state.lyricItemArray.map((lyricItem) => {
+
+                            var key = Object.keys(lyricItem)[0];
+                            console.log(key);
+                            var lyricObject = lyricItem[key];
+                            console.log(lyricObject);
+                            console.log(lyricObject.title);
+                            return (
+                                <li key={key}>
+                                    <p>{lyricObject.title}</p>
+                                    <p>{lyricObject.album}</p>
+                                    <p>{lyricObject.line}</p>
+                                </li>
+                            );
+                        })
                     }
                 </ul>
             </div>
@@ -38,17 +46,12 @@ class FavoritesDisplay extends React.Component {
             var album = favorites[albumTitle];
             Object.keys(album).map((songName)=>{
                 var songItems = album[songName];
-                Object.keys(songItems).map((songItem) => {
-                    var lyricItem = songItems[songItem];
-                    console.log(this.state);
-                    var lyricItemArray = this.state.lyricItemArray;
-                    lyricItemArray.push(lyricItem);
-                    console.log(lyricItemArray);
-                    this.setState({
-                        lyricItemArray: lyricItemArray
-                    }, this)
-                }, this)
-            }, this)
-        }, this)
+                var lyricItemArray = this.state.lyricItemArray;
+                lyricItemArray.push(songItems);
+                this.setState({
+                    lyricItemArray: lyricItemArray
+                })
+            })
+        })
     }    
 }
