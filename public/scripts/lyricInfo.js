@@ -126,5 +126,6 @@ class LyricInfo extends React.Component {
                 });
             }
         });
+        this.props.getFavorites(this.props.album, this.props.title, this.props.lyrics);
     }
 }
