@@ -16,17 +16,16 @@ class FavoritesDisplay extends React.Component {
 
     render() {
         return (
-            <div>
+            <div className="container">
                 <h3>Your Favorite Lyrics</h3>
-                <ul>
+                <ul className="list-group">
                     {
                         this.state.lyricItemArray.map((lyricItem) => {
                             var key = Object.keys(lyricItem)[0];
                             var lyricObject = lyricItem[key];
                             return (
-                                <li key={key}>
-                                    <p>{lyricObject.title}</p>
-                                    <p>{lyricObject.album}</p>
+                                <li key={key} className="list-group-item">
+                                    <p>{this.toTitleFormat(lyricObject.title)} <span>-{this.toTitleFormat(lyricObject.album)}</span></p>
                                     <p>{lyricObject.line}</p>
                                 </li>
                             );
@@ -49,5 +48,13 @@ class FavoritesDisplay extends React.Component {
         this.setState({
             lyricItemArray: lyricItemArray
         });
-    }    
+    }
+
+    toTitleFormat(text) {
+        var newText = text
+            .replace(/_/g, " ") // change underlines to spaces
+            .replace(/(?: |\b)(\w)/g, function(key) { return key.toUpperCase() }); // capitalize the first letter of each word
+
+        return(newText);
+    }
 }

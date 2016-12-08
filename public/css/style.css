@@ -142,3 +142,11 @@
     line-height: 1.4;
     margin-bottom: .6em;
 }
+
+.list-group-item span{
+    font-size: 0.7em;
+}
+
+.btn .caret {
+    margin-left: 5px;
+}
