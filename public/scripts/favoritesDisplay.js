@@ -1,6 +1,18 @@
 "use strict";
 
 class FavoritesDisplay extends React.Component {
+    constructor(props) {
+        super(props);
+        
+        this.state = {
+            lyricItemArray: []
+        };
+    }
+
+    componentDidMount(){
+        var favorites = this.props.favorites;
+        this.createListOfLyricItems(favorites);
+    }
 
     render() {
         return (
@@ -8,30 +20,35 @@ class FavoritesDisplay extends React.Component {
                 <h3>Your Favorite Lyrics</h3>
                 <ul>
                     {
-                        Object.keys(this.props.favorites).map((albumTitle)=> {
-                            Object.keys(this.props.favorites[albumTitle]).map((songName)=>{
-                                var songItems = this.props.favorites[albumTitle][songName];
-                                Object.keys(songItems).map((songItem) => {
-                                    var lyricsItem = songItems[songItem];
-                                    console.log(lyricsItem.title);
-
-                                    return (
-                                        <li>
-                                            <p>Help, why isn't this working</p>
-                                            <p>{lyricsItem.title}</p>
-                                            <p>{lyricsItem.album}</p>
-                                            <p>{lyricsItem.line}</p>
-                                        </li>
-                                    )
-                                })
-                            })
-                            
-
-
-                        }, this)
+                        this.state.lyricItemArray.map((lyricItem) => (
+                            <li>
+                                <p>{lyricItem.title}</p>
+                                <p>{lyricItem.album}</p>
+                                <p>{lyricItem.line}</p>
+                            </li>
+                        ))
                     }
                 </ul>
             </div>
         );
-    }          
+    }
+
+    createListOfLyricItems(favorites){
+        Object.keys(favorites).map((albumTitle) => {
+            var album = favorites[albumTitle];
+            Object.keys(album).map((songName)=>{
+                var songItems = album[songName];
+                Object.keys(songItems).map((songItem) => {
+                    var lyricItem = songItems[songItem];
+                    console.log(this.state);
+                    var lyricItemArray = this.state.lyricItemArray;
+                    lyricItemArray.push(lyricItem);
+                    console.log(lyricItemArray);
+                    this.setState({
+                        lyricItemArray: lyricItemArray
+                    }, this)
+                }, this)
+            }, this)
+        }, this)
+    }    
 }
