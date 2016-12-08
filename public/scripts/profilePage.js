@@ -2,16 +2,24 @@
 
 class ProfilePage extends React.Component {
     constructor(props) {
-        super(props);       
+        super(props);
+
+        this.state = {}; 
+    }
+
+    componentDidMount(){
         var database = firebase.database();
-        var user = firebase.auth().currentUser;
         var userId = firebase.auth().currentUser.uid;
 
-        database.ref('/userTree/' + user.uid).once('value').then((snapshot) => {
-           this.state = {
-               favorites:snapshot.val()
-           };
-        });
+        database.ref('/userTree/' + userId).once('value').then((snapshot) => {
+            console.log("here's the snapshot value");
+            console.log(snapshot.val());
+            this.setState({
+                favorites:snapshot.val()
+            });
+       });
+
+       console.log("the component mounted");
     }
         
     
@@ -19,18 +27,16 @@ class ProfilePage extends React.Component {
         return(
             <div>
                 <Header/>
-           
-                <FavoritesDisplay 
-                    favorites={this.state.favorites}
-                />
-               
+                {
+                    this.state.favorites ? (
+                    <FavoritesDisplay 
+                        favorites={this.state.favorites}
+                    />
+                    ) : null
+                }
             </div>
-
         );
-    }
-
-
-    
+    } 
 }
 
 firebase.auth().onAuthStateChanged(function(user) {
