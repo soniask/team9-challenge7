@@ -1,5 +1,11 @@
 "use strict";
 
+firebase.auth().onAuthStateChanged(function(user) {
+    if (!user) {
+        window.location.href= "login.html";
+    }
+})
+
 class ProfilePage extends React.Component {
     constructor(props) {
         super(props);
@@ -10,7 +16,6 @@ class ProfilePage extends React.Component {
     componentDidMount(){
         var database = firebase.database();
         var userId = firebase.auth().currentUser.uid;
-
         database.ref('/userTree/' + userId).once('value').then((snapshot) => {
             this.setState({
                 favorites:snapshot.val()
@@ -34,25 +39,6 @@ class ProfilePage extends React.Component {
         );
     } 
 }
-
-firebase.auth().onAuthStateChanged(function(user) {
-    if (user) {
-        // Data fetching
-
-        
-        
-        
-
-        // favorites.on('child_added', function(data) {
-        //     var id = data.key;
-        //     var favorite = data.val();
-        // });
-    
-    } else {
-        //redirect to index.html
-        window.location.href= "index.html";
-    }
-})
 
 var profileWrapper = document.getElementById("profile-wrapper");
 ReactDOM.render(<ProfilePage />, profileWrapper);
