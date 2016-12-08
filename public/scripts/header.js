@@ -12,9 +12,11 @@ class Header extends React.Component {
     render(){
         var user = firebase.auth().currentUser;
         return (
+            
             <header>
-                {   
-                    user ? (
+                {
+                    this.state.user ? (
+
                         <div className="dropdown pull-right">
                             <button className="btn btn-default dropbtn">
                                 Welcome, {user.displayName}
@@ -59,8 +61,6 @@ class Header extends React.Component {
                         </div>
                     )
                 }
-                
-                <h1>Lyricy McLyricFace</h1>
                 
             </header>
         );

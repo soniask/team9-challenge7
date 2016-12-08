@@ -10,63 +10,79 @@ class SearchPage extends React.Component {
     render() {
 
         return(
-            <div className="container">
-                <div className="fix-to-top">
-                    <Header/>
-                    <SearchForm
-                        search={(track) => this.searchTracks(track)}
-                    />
+            <div>
+                <div className="container-fluid">
 
-                    {
-                        this.state.error 
-                            ? (
-                                <p className="alert alert-danger">{this.state.error}</p>
-                            ) 
-                            : null
-                    }
+                    <div className="row top-nav">
+
+                        <div className="col-sm-3 title">Yeezy McYeezusFace</div>
+
+                        <div className="col-md-6 search">
+                            <SearchForm
+                                search={(track) => this.searchTracks(track)}
+                            />
+                                {
+                                    this.state.error 
+                                        ? (
+                                            <p className="alert alert-danger">{this.state.error}</p>
+                                        ) 
+                                        : null
+                                }
+                        </div>
+
+                        <div className="col-sm-2 actions">
+                            <Header/>
+                        </div>
+
+                    </div>
+
                 </div>
 
-                <div className="row move-below">
-                    {
-                        this.state.lyrics
-                            ?
-                                <div className="col-md-6">
-                                    <LyricDisplay
-                                        lyrics={this.state.lyrics}
-                                        title={this.state.title}
-                                        album={this.state.album}
-                                        storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
-                                    />
-                                </div>
-                            : null
-                    }
+                <div className="container">
 
-                    {
-                        this.state.lineNumber != undefined
-                            ?
-                                <div className="col-md-6">
-                                    <div className="lyric-info">
-                                        <LyricInfo
-                                            title={this.state.title}
-                                            album={this.state.album}
-                                            line={this.state.lyrics[this.state.lineNumber]}
-                                            lineNumber={this.state.lineNumber}
-                                        />
 
-                                        <div className="line-break"></div>
-
-                                        <TopLyrics
-                                            title={this.state.title}
-                                            album={this.state.album}
+                    <div className="row move-below">
+                        {
+                            this.state.lyrics
+                                ?
+                                    <div className="col-md-6">
+                                        <LyricDisplay
                                             lyrics={this.state.lyrics}
+                                            title={this.state.title}
+                                            album={this.state.album}
+                                            storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
                                         />
                                     </div>
-                                </div>
-                            : null
-                    }
+                                : null
+                        }
+
+                        {
+                            this.state.lineNumber != undefined
+                                ?
+                                    <div className="col-md-6">
+                                        <div className="lyric-info">
+                                            <LyricInfo
+                                                title={this.state.title}
+                                                album={this.state.album}
+                                                line={this.state.lyrics[this.state.lineNumber]}
+                                                lineNumber={this.state.lineNumber}
+                                            />
+
+                                            <div className="line-break"></div>
+
+                                            <TopLyrics
+                                                title={this.state.title}
+                                                album={this.state.album}
+                                                lyrics={this.state.lyrics}
+                                            />
+                                        </div>
+                                    </div>
+                                : null
+                        }
+                    </div>
+
+
                 </div>
-
-
             </div>
         );
     }
