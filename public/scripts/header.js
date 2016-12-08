@@ -1,17 +1,6 @@
 "use strict";
 
 class Header extends React.Component {
-    constructor(props) {
-        super(props);
-        var user = firebase.auth().currentUser;
-        if(user){
-            this.state={
-                user: user
-            };
-        } else {
-            this.state={};
-        }
-    }
 
     componentDidMount(){
         document.getElementById("logout").addEventListener("click", function (e) {
@@ -21,13 +10,14 @@ class Header extends React.Component {
     }
 
     render(){
+        var user = firebase.auth().currentUser;
         return (
             <header>
-                {
-                    this.state.user ? (
+                {   
+                    user ? (
                         <div className="dropdown pull-right">
                             <button className="btn btn-default dropbtn">
-                                Welcome, {this.state.user.displayName}
+                                Welcome, {user.displayName}
                                 <span className="caret"></span>
                             </button>
                             <div className="dropdown-content">
@@ -45,7 +35,7 @@ class Header extends React.Component {
                         </div>
                     ) : (
                         <div className="dropdown pull-right">
-                            <button className="btn-default dropbtn">
+                            <button className="btn btn-default dropbtn">
                                 Welcome
                                 <span className="caret"></span>
                             </button>
