@@ -1,16 +1,6 @@
 "use strict";
 
 class TopLyrics extends React.Component {
-    constructor(props) {
-        super(props);
-
-        this.state = {
-            favorites: []
-        }
-    }
-
-    componentDidMount() {
-    }
     
     render() {
 
@@ -34,7 +24,4 @@ class TopLyrics extends React.Component {
             </div>
         );
     }
-
-    // Returns an array of the top "n" most favorited lines of the current song,
-    // in order of decreasing popularity
 }
