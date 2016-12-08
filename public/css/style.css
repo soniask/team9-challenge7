@@ -125,6 +125,11 @@
 
 /* TopLyric stylings */
 
+.top-lyrics {
+    overflow-y: auto;
+    height: 200px;
+}
+
 .top-lyrics .title {
     font-size: 1.4em;
     line-height: 1.6;

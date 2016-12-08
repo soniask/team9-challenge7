@@ -4,7 +4,9 @@ class SearchPage extends React.Component {
     constructor(props){
         super(props);
 
-        this.state = {};
+        this.state = {
+            favorites: []
+        };
     }
 
     render() {
@@ -39,44 +41,45 @@ class SearchPage extends React.Component {
 
                 <div className="container">
 
-                    <div className="row move-below">
-                        {
-                            this.state.lyrics
-                                ?
-                                    <div className="col-md-6">
-                                        <LyricDisplay
-                                            lyrics={this.state.lyrics}
+                <div className="row move-below">
+                    {
+                        this.state.lyrics
+                            ?
+                                <div className="col-md-6">
+                                    <LyricDisplay
+                                        lyrics={this.state.lyrics}
+                                        title={this.state.title}
+                                        album={this.state.album}
+                                        storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
+                                        getFavorites={((album, title, lyrics) => this.getFavorites(album, title, lyrics))}
+                                    />
+                                </div>
+                            : null
+                    }
+
+                    {
+                        this.state.lineNumber != undefined
+                            ?
+                                <div className="col-md-6">
+                                    <div className="lyric-info">
+                                        <LyricInfo
                                             title={this.state.title}
                                             album={this.state.album}
-                                            storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
+                                            line={this.state.lyrics[this.state.lineNumber]}
+                                            lineNumber={this.state.lineNumber}
+                                            lyrics={this.state.lyrics}
+                                            getFavorites={(album, title, lyrics) => this.getFavorites(album, title, lyrics)}
+                                        />
+
+                                        <div className="line-break"></div>
+
+                                        <TopLyrics
+                                            favorites={this.state.favorites}
                                         />
                                     </div>
-                                : null
-                        }
-
-                        {
-                            this.state.lineNumber != undefined
-                                ?
-                                    <div className="col-md-6">
-                                        <div className="lyric-info">
-                                            <LyricInfo
-                                                title={this.state.title}
-                                                album={this.state.album}
-                                                line={this.state.lyrics[this.state.lineNumber]}
-                                                lineNumber={this.state.lineNumber}
-                                            />
-
-                                            <div className="line-break"></div>
-
-                                            <TopLyrics
-                                                title={this.state.title}
-                                                album={this.state.album}
-                                                lyrics={this.state.lyrics}
-                                            />
-                                        </div>
-                                    </div>
-                                : null
-                        }
+                                </div>
+                            : null
+                    }
                     </div>
 
 
@@ -150,6 +153,44 @@ class SearchPage extends React.Component {
 
         this.setState({
             lineNumber: lineNumber
+        });
+    }
+
+    getFavorites(album, title, lyrics) {
+        var n = 5;
+        var database = firebase.database();
+        var refLocation = "lyricTree/" + album + "/" + title;
+
+        // Will contain objects with line number and favorites
+        var lineList = [];
+
+        // Builds up `lineList`
+        database.ref(refLocation).once("value").then((snapshot) => {
+
+            snapshot.forEach((line) => {
+
+                lineList.push({
+                    lineNumber: line.key,
+                    favorites: Object.keys(line.val()).length
+                });
+            });
+            lineList.sort((a, b) => {
+                return b.favorites - a.favorites
+            });
+
+            // Will contain most favorited lyrics, in order
+            var lyricList = [];
+
+            // build up `lineList`
+            lineList.forEach((line) => {
+                lyricList.push(lyrics[line.lineNumber]);
+            });
+
+            // Only return top "n" lines
+            var favorites = lyricList.slice(0, n);
+            this.setState({
+                favorites: favorites
+            });
         });
     }
 }
