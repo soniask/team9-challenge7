@@ -1,10 +1,56 @@
 "use strict";
 
 class LyricInfo extends React.Component {
+    constructor(props) {
+        super(props);
 
-    render() {
+        this.state = {
+            valueExists: false,
+            error: false,
+            errorMessage: ""
+        }
+    }
+
+    componentDidMount() {
 
         var user = firebase.auth().currentUser;
+
+        if(!user) {
+            this.setState({
+                error: true,
+                errorMessage: "You must be logged in to see other user's favorites and favorite your own lyrics"
+            })
+        } else {
+            this.setState({
+                error: false,
+                errorMessage: ""
+            })
+        }
+
+        var database = firebase.database();
+
+        var uid = user.uid;
+        var displayName = user.displayName;
+
+        var title = this.props.title;
+        var album = this.props.album;
+        var lineNumber = this.props.lineNumber;
+        var line = this.props.line;
+        
+        var userTree = database.ref("userTree/" + uid + "/" + album + "/" + title);
+
+        userTree.once('value').then((snapshot) => {
+            if(snapshot.val() !== null) {
+                this.setState({
+                    error: true,
+                    errorMessage: "You have already favorited a lyric from this song"
+                })
+            }
+        });
+
+    }
+
+    render() {
 
         return(
 
@@ -15,16 +61,10 @@ class LyricInfo extends React.Component {
                 </div>
 
                 {
-                    user
-                        ?
+                    !this.state.error
+                        ? (
                             <div>
                                 <div className="favorite-list">
-                                    <ul>
-                                        <li>hi</li>
-                                        <li>hi</li>
-                                        <li>hi</li>
-                                        <li>hi</li>
-                                    </ul>
                                 </div>
 
                                 <button 
@@ -36,10 +76,12 @@ class LyricInfo extends React.Component {
                                 </button>
 
                             </div>
-                        : 
+                            )   
+                        : (
                             <div className="alert alert-info" role="alert">
-                                You must be logged in to see other user's favorites and favorite your own lyrics
+                                {this.state.errorMessage}
                             </div>
+                        )
                 }
             
             </div>
@@ -62,21 +104,27 @@ class LyricInfo extends React.Component {
         var album = this.props.album;
         var lineNumber = this.props.lineNumber;
         var line = this.props.line;
-
         
-
         var userTree = database.ref("userTree/" + uid + "/" + album + "/" + title);
-        userTree.push({
-            album: album,
-            title: title,
-            line: line
+
+        userTree.once('value').then((snapshot) => {
+            if(snapshot.val() == null) {
+                userTree.push({
+                    album: album,
+                    title: title,
+                    line: line
+                });
+
+                var lyricTree = database.ref("lyricTree/" + album + "/" + title + "/" + lineNumber);
+                lyricTree.push({
+                    displayName: displayName
+                });
+                this.setState({
+                    valueExists: false,
+                    error: true,
+                    errorMessage: "You have already favorited a lyric from this song"
+                });
+            }
         });
-
-        var lyricTree = database.ref("lyricTree/" + album + "/" + title + "/" + lineNumber);
-        lyricTree.push({
-            displayName: displayName
-        });
-
-
     }
 }
