@@ -12,21 +12,34 @@ class SearchPage extends React.Component {
     render() {
 
         return(
-            <div className="container">
-                <div className="fix-to-top">
-                    <Header/>
-                    <SearchForm
-                        search={(track) => this.searchTracks(track)}
-                    />
+            <div>
+                <div className="container-fluid">
+                    <div className="row top-nav">
 
-                    {
-                        this.state.error 
-                            ? (
-                                <p className="alert alert-danger">{this.state.error}</p>
-                            ) 
-                            : null
-                    }
+                        <div className="col-sm-3 title">Yeezy McYeezusFace</div>
+
+                        <div className="col-md-6 search">
+                            <SearchForm
+                                search={(track) => this.searchTracks(track)}
+                            />
+                                {
+                                    this.state.error 
+                                        ? (
+                                            <p className="alert alert-danger">{this.state.error}</p>
+                                        ) 
+                                        : null
+                                }
+                        </div>
+
+                        <div className="col-sm-2 actions">
+                            <Header/>
+                        </div>
+
+                    </div>
+
                 </div>
+
+                <div className="container">
 
                 <div className="row move-below">
                     {
@@ -67,9 +80,10 @@ class SearchPage extends React.Component {
                                 </div>
                             : null
                     }
+                    </div>
+
+
                 </div>
-
-
             </div>
         );
     }
