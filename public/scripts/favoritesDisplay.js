@@ -21,12 +21,8 @@ class FavoritesDisplay extends React.Component {
                 <ul>
                     {
                         this.state.lyricItemArray.map((lyricItem) => {
-
                             var key = Object.keys(lyricItem)[0];
-                            console.log(key);
                             var lyricObject = lyricItem[key];
-                            console.log(lyricObject);
-                            console.log(lyricObject.title);
                             return (
                                 <li key={key}>
                                     <p>{lyricObject.title}</p>

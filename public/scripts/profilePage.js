@@ -15,7 +15,7 @@ class ProfilePage extends React.Component {
             this.setState({
                 favorites:snapshot.val()
             });
-       });
+        });
     }
         
     
