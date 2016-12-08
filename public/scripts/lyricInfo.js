@@ -54,7 +54,7 @@ class LyricInfo extends React.Component {
 
         return(
 
-            <div className="lyric-info">
+            <div>
 
                 <div className="chosen-line">
                     {this.props.line}

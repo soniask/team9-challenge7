@@ -35,6 +35,15 @@
     margin-top: 120px;
 }
 
+.line-break {
+    border-bottom: 1px solid black;
+    padding-left: 5%;
+    padding-right: 5%;
+    margin-top: 1em;
+    margin-bottom: 1em;
+    clear: both;
+}
+
 /* LyricDisplay Component Stylings */
 
 .song-display h2 {
@@ -69,8 +78,7 @@
 .lyric-info {
     position: fixed;
     top: 21.5vh;
-    padding-left: 15px;
-    padding-right: 15px;
+    padding: 20px;
     border: 1px solid;
     border-radius: 10px;
 }
@@ -93,4 +101,19 @@
 
 .clear-both {
     clear: both;
+}
+
+/* TopLyric stylings */
+
+.top-lyrics .title {
+    font-size: 1.4em;
+    line-height: 1.6;
+    font-weight: bold;
+    margin-bottom: 1em;
+}
+
+.top-lyrics .line {
+    font-size: 1.2em;
+    line-height: 1.4;
+    margin-bottom: .6em;
 }
