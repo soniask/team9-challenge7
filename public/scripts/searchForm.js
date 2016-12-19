@@ -7,7 +7,7 @@ class SearchForm extends React.Component {
                     <input className="form-control" type="text" placeholder="Search" aria-label="Search input" ref="query"/>
                     <span className="input-group-btn">
                         <button className="btn btn-default" type="submit">
-                            <i className="fa fa-search" aria-hidden="true"></i>
+                            <i className="fa fa-search" aria-label="Search"></i>
                         </button>
                     </span>
                 </div>

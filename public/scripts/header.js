@@ -18,7 +18,7 @@ class Header extends React.Component {
                     user ? (
 
                         <div className="dropdown pull-right">
-                            <button className="btn btn-default dropbtn">
+                            <button className="btn btn-default">
                                 Welcome, {user.displayName} 
                                 <span className="caret"></span>
                             </button>
@@ -47,7 +47,7 @@ class Header extends React.Component {
                         </div>
                     ) : (
                         <div className="dropdown pull-right">
-                            <button className="btn btn-default dropbtn">
+                            <button className="btn btn-default">
                                 Welcome 
                                 <span className="caret"></span>
                             </button>

@@ -1,6 +1,7 @@
 .dropdown {
     position: relative;
     display: inline-block;
+    z-index: 3;
 }
 
 .dropdown-content {
@@ -15,6 +16,11 @@
 
 .dropdown:hover .dropdown-content {
     display: block;
+}
+
+.back-link {
+    padding-top: 20px;
+    padding-bottom: 20px;
 }
 
 /* Top navigation stylings */

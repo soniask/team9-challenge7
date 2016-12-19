@@ -17,7 +17,9 @@ class SearchPage extends React.Component {
                     <div className="row top-nav">
 
                         <div className="col-sm-3 title">Yeezy McYeezusFace</div>
-
+                        <div className="col-sm-2 actions">
+                            <Header/>
+                        </div>
                         <div className="col-sm-6 search">
                             <SearchForm
                                 search={(track) => this.searchTracks(track)}
@@ -29,10 +31,6 @@ class SearchPage extends React.Component {
                                         ) 
                                         : null
                                 }
-                        </div>
-
-                        <div className="col-sm-2 actions">
-                            <Header/>
                         </div>
 
                     </div>

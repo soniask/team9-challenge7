@@ -23,30 +23,34 @@ class LoginPage extends React.Component {
     render() {
 
         return(
-
-            <div>
-                <div className="col col-sm-6">
-                    <SignupForm onSubmit={(name, email, password, passwordConfirm) => this.createUser(name, email, password, passwordConfirm)}/>
-                    {
-                        this.state.signupError ? (
-
-                            <div ref="signupError" className="alert alert-danger" role="alert">{this.state.error}</div>
-
-                        ) : null
-                    }
+            <div className="container">
+                <div className="back-link">
+                    <a href="/index.html"><i className="fa fa-long-arrow-left" aria-hidden="true"></i> Back to main page</a>
                 </div>
-                <div className="col col-sm-6">
-                    <LoginForm onSubmit={(email, password) => this.loginUser(email, password)}/>
-                    {
-                        this.state.loginError ? (
+                
+                <div>
+                    <div className="col col-sm-6">
+                        <SignupForm onSubmit={(name, email, password, passwordConfirm) => this.createUser(name, email, password, passwordConfirm)}/>
+                        {
+                            this.state.signupError ? (
 
-                            <div ref="loginError" className="alert alert-danger" role="alert">{this.state.error}</div>
-                            
-                        ) : null
-                    }
+                                <div ref="signupError" className="alert alert-danger" role="alert">{this.state.error}</div>
+
+                            ) : null
+                        }
+                    </div>
+                    <div className="col col-sm-6">
+                        <LoginForm onSubmit={(email, password) => this.loginUser(email, password)}/>
+                        {
+                            this.state.loginError ? (
+
+                                <div ref="loginError" className="alert alert-danger" role="alert">{this.state.error}</div>
+                                
+                            ) : null
+                        }
+                    </div>
                 </div>
             </div>
-
         );
     }
 
