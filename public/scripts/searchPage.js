@@ -40,25 +40,11 @@ class SearchPage extends React.Component {
                 <div className="container">
 
                 <div className="row move-below">
-                    {
-                        this.state.lyrics
-                            ?
-                                <div className="col-sm-6">
-                                    <LyricDisplay
-                                        lyrics={this.state.lyrics}
-                                        title={this.state.title}
-                                        album={this.state.album}
-                                        storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
-                                        getFavorites={((album, title, lyrics) => this.getFavorites(album, title, lyrics))}
-                                    />
-                                </div>
-                            : null
-                    }
 
                     {
                         this.state.lineNumber != undefined
                             ?
-                                <div className="col-sm-6">
+                                <div className="col-sm-6 pull-right">
                                     <div className="lyric-info">
                                         <LyricInfo
                                             title={this.state.title}
@@ -78,8 +64,23 @@ class SearchPage extends React.Component {
                                 </div>
                             : null
                     }
-                    </div>
 
+                    {
+                        this.state.lyrics
+                            ?
+                                <div className="col-sm-6">
+                                    <LyricDisplay
+                                        lyrics={this.state.lyrics}
+                                        title={this.state.title}
+                                        album={this.state.album}
+                                        storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
+                                        getFavorites={((album, title, lyrics) => this.getFavorites(album, title, lyrics))}
+                                    />
+                                </div>
+                            : null
+                    }
+
+                    </div>
 
                 </div>
             </div>

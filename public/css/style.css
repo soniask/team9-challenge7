@@ -101,9 +101,14 @@
 
 /* LyricInfo Component Stylings */
 
+@media (min-width: 768px) {
+    .lyric-info {
+        position: fixed;
+        top: 21.5vh;
+    }
+}
+
 .lyric-info {
-    position: fixed;
-    top: 21.5vh;
     padding: 20px;
     border: 1px solid;
     border-radius: 10px;
