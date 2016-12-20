@@ -106,6 +106,9 @@
         position: fixed;
         top: 21.5vh;
     }
+    .move-right {
+        float: right;
+    }
 }
 
 .lyric-info {

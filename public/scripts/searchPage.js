@@ -39,46 +39,55 @@ class SearchPage extends React.Component {
 
                 <div className="container">
 
-                <div className="row move-below">
+                    <div className="row move-below">
 
-                    {
-                        this.state.lineNumber != undefined
-                            ?
-                                <div className="col-sm-6 pull-right">
-                                    <div className="lyric-info">
-                                        <LyricInfo
+                        {
+                            this.state.lineNumber != undefined
+                                ?
+                                    <div className="col-sm-6 move-right">
+                                        <div className="lyric-info">
+                                            <button 
+                                                type="button" 
+                                                className="close" 
+                                                aria-label="Close" 
+                                                onClick={(e) => this.storeLineNumber(undefined)}
+                                            >
+                                                <span aria-hidden="true">&times;</span>
+                                            </button>
+
+                                            <LyricInfo
+                                                title={this.state.title}
+                                                album={this.state.album}
+                                                line={this.state.lyrics[this.state.lineNumber]}
+                                                lineNumber={this.state.lineNumber}
+                                                lyrics={this.state.lyrics}
+                                                getFavorites={(album, title, lyrics) => this.getFavorites(album, title, lyrics)}
+                                            />
+
+                                            <div className="line-break"></div>
+
+                                            <TopLyrics
+                                                favorites={this.state.favorites}
+                                            />
+                                        </div>
+                                    </div>
+                                : null
+                        }
+
+                        {
+                            this.state.lyrics
+                                ?
+                                    <div className="col-sm-6">
+                                        <LyricDisplay
+                                            lyrics={this.state.lyrics}
                                             title={this.state.title}
                                             album={this.state.album}
-                                            line={this.state.lyrics[this.state.lineNumber]}
-                                            lineNumber={this.state.lineNumber}
-                                            lyrics={this.state.lyrics}
-                                            getFavorites={(album, title, lyrics) => this.getFavorites(album, title, lyrics)}
-                                        />
-
-                                        <div className="line-break"></div>
-
-                                        <TopLyrics
-                                            favorites={this.state.favorites}
+                                            storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
+                                            getFavorites={((album, title, lyrics) => this.getFavorites(album, title, lyrics))}
                                         />
                                     </div>
-                                </div>
-                            : null
-                    }
-
-                    {
-                        this.state.lyrics
-                            ?
-                                <div className="col-sm-6">
-                                    <LyricDisplay
-                                        lyrics={this.state.lyrics}
-                                        title={this.state.title}
-                                        album={this.state.album}
-                                        storeLineNumber={(lineNumber) => this.storeLineNumber(lineNumber)}
-                                        getFavorites={((album, title, lyrics) => this.getFavorites(album, title, lyrics))}
-                                    />
-                                </div>
-                            : null
-                    }
+                                : null
+                        }
 
                     </div>
 
@@ -149,7 +158,6 @@ class SearchPage extends React.Component {
 
     // Add the given line number to the current state
     storeLineNumber(lineNumber) {
-
         this.setState({
             lineNumber: lineNumber
         });
