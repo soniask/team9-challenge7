@@ -4,7 +4,7 @@ class SearchForm extends React.Component {
         return (
             <form onSubmit={(e)=>this.searchTracks(e)} className="half-sized">
                 <div className="input-group">
-                    <input className="form-control" type="text" placeholder="Search" aria-label="Search input" ref="query"/>
+                    <input className="form-control" type="text" placeholder="Search Kanye West songs..." aria-label="Search input" ref="query"/>
                     <span className="input-group-btn">
                         <button className="btn btn-default" type="submit">
                             <i className="fa fa-search" aria-label="Search"></i>
